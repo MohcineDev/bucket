@@ -1,56 +1,78 @@
-body{
-    background-color: #313131;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    color: lightblue;
-    display: flex;
-    justify-content: center; /*space-around */
-    min-height: 100vh; /*view height*/ 
-    margin: 0;
-    align-items: center; /*align vertical and horezontal*/
+:root {
+    --dark-bg: #313131;
+    --light-txt: lightblue;
 }
 
-#container{
+body {
+    background-color: var(--dark-bg);
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    color: var(--light-txt);
+    margin: 0;
+    align-items: center;
+    position: relative;
+}
+
+.light {
+    background-color: var(--light-txt);
+    color: var(--dark-bg);
+}
+
+.theme {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#container {
     background-color: rgb(7, 18, 39);
     padding: 3em;
     border-radius: 2em;
     border: 2px solid rgb(27, 76, 105);
     display: flex;
+    color: var(--light-txt);
     justify-content: center;
     align-items: center;
-    flex-direction: column; /*change direction to vertical*/
+    flex-direction: column;
+    /*change direction to vertical*/
 }
 
-#container:hover{
+#container:hover {
     border: 2px solid rgb(20, 77, 143);
-box-shadow: 0px 0px 20px   rgb(20, 77, 143);
+    box-shadow: 0px 0px 20px rgb(20, 77, 143);
 }
 
-h1{ 
+h1 {
     color: rgb(10, 110, 168);
     margin: 0;
 }
 
-div h3{
+.bucket-name {
     font-weight: 100;
     background-color: rgb(7, 18, 39);
-    border-left: 2px solid rgb(10, 110, 168);
-    border-right: 2px solid rgb(10, 110, 168);
+    border-width: 0 2px 0 2px;
+    border-style: solid;
+    border-color: rgb(10, 110, 168);
     border-radius: 5px;
     padding: 4px 10px;
     letter-spacing: 1px;
     color: rgb(10, 110, 168);
     font-size: 1em;
-    width: 15rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 1rem 0;
+    text-align: center;
 }
-form div{
+
+form div {
     display: flex;
     align-items: center;
 }
-form{
+
+form {
     display: grid;
     grid-template-columns: auto auto;
     row-gap: 20px;
@@ -59,12 +81,15 @@ form{
     align-items: center;
 
 }
-input{
+
+input {
     outline: none;
 }
-input[type=number]{
+
+input[type=number] {
     width: 2rem;
 }
+
 /* input[type=text]{
     background-color: rgb(7, 18, 39);
     border:none;
@@ -76,11 +101,11 @@ input[type=number]{
     color: lightcoral;
     font-size: 1em;
 } */
-input, label{
+input[type=number], input[type=checkbox], label {
     cursor: pointer;
 }
 
-button{
+button {
     cursor: pointer;
     margin: 10px;
     background-color: transparent;
@@ -95,7 +120,8 @@ button{
     outline: none;
 
 }
-button:hover{
+
+button:hover {
     background-color: rgb(20, 77, 143);
 
 }

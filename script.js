@@ -9,6 +9,17 @@
 
 const range = document.getElementById('range')
 const num = document.getElementById('num')
+const themeBtn = document.querySelector('.theme')
+const input = document.querySelector('input[type=text]')
+
+
+
+themeBtn.addEventListener('click', ()=>{
+
+      document.body.classList.contains('light') ? document.body.classList.remove("light") : document.body.classList.add('light')
+})
+
+input.addEventListener('focus', (e)=> e.target.select())
 
 range.addEventListener('input', numvalue)
 num.addEventListener('input', numvalue)
@@ -26,7 +37,6 @@ const upper = document.getElementById('upper')
 const number = document.getElementById('number')
 const sumbol = document.getElementById('sumbol')
 
-const display = document.getElementById('display')
 
 const lower_case_code = ArrayFromLowToHigh(97, 122) //ascii
 const upper_case_code = ArrayFromLowToHigh(65, 90) // the range of upper case characters in decimal
@@ -44,7 +54,7 @@ form.addEventListener('submit', a => {
     const includeSumbol = sumbol.checked
 
     const password = generatepass(charAmount, includeUpper, includeNumber, includeSumbol) // call the function
-    display.innerText = password    //set the password
+    input.value = password      //set the value
 })
 //return an array based on the low and high value
 function ArrayFromLowToHigh(low, high) {
