@@ -1,4 +1,4 @@
-## Password Generator
+##  amazon bucket random name 
 
 up to 20 character
 
