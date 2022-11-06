@@ -1,25 +1,17 @@
-// function fun(){
-
-//     if(document.getElementById('range').click){
-//         const e=document.getElementById('range').value
-
-//         document.getElementById('num').value=e
-//     }
-// }
-
 const range = document.getElementById('range')
 const num = document.getElementById('num')
 const themeBtn = document.querySelector('.theme')
-const input = document.querySelector('.bucket-name')
+const bucketName = document.querySelector('.bucket-name')
 const addInputBtn = document.querySelector('.add-input')
 const wrapper = document.querySelector('.wrapper')
+const inputTxt = document.querySelectorAll('input[type=text]')
 
 themeBtn.addEventListener('click', () => {
 
     document.body.classList.contains('light') ? document.body.classList.remove("light") : document.body.classList.add('light')
 })
 
-input.addEventListener('focus', (e) => e.target.select())
+inputTxt.forEach(input => input.addEventListener('focus', (e) => e.target.select()))
 
 range.addEventListener('input', numvalue)
 num.addEventListener('input', numvalue)
@@ -53,8 +45,8 @@ form.addEventListener('submit', a => {
     const includeNumber = number.checked
     const includeSumbol = sumbol.checked
 
-    const password = generatepass(charAmount, includeUpper, includeNumber, includeSumbol) // call the function
-    input.value = password      //set the value
+    const name = generatepass(charAmount, includeUpper, includeNumber, includeSumbol) // call the function
+    bucketName.value = name      //set the value
 })
 //return an array based on the low and high value
 function ArrayFromLowToHigh(low, high) {
@@ -90,7 +82,13 @@ const addInput = () => {
     let input = document.createElement('input')
 
     input.placeholder = "save bucket name here"
+    input.addEventListener('focus', (e) => e.target.select())
     wrapper.appendChild(input)
 }
 
 addInputBtn.addEventListener('click', addInput)
+
+const selectOnFocus = ()=>{
+
+    input.addEventListener('focus', (e) => e.target.select())
+}
