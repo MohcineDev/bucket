@@ -6,9 +6,20 @@ const addInputBtn = document.querySelector('.add-input')
 const wrapper = document.querySelector('.wrapper')
 const inputTxt = document.querySelectorAll('input[type=text]')
 
-themeBtn.addEventListener('click', () => {
+// set the theme state
+const setDark = () => {
+    document.body.classList.remove("light")
+    localStorage.setItem('dark', true)
+}
+const removeDark = () => {
+    document.body.classList.add('light')
+    localStorage.setItem('dark', false)
+}
 
-    document.body.classList.contains('light') ? document.body.classList.remove("light") : document.body.classList.add('light')
+localStorage.getItem('dark') == 'true' ? setDark() : removeDark()
+
+themeBtn.addEventListener('click', () => {
+    document.body.classList.contains('light') ? setDark():removeDark()
 })
 
 inputTxt.forEach(input => input.addEventListener('focus', (e) => e.target.select()))
@@ -88,7 +99,6 @@ const addInput = () => {
 
 addInputBtn.addEventListener('click', addInput)
 
-const selectOnFocus = ()=>{
-
+const selectOnFocus = () => {
     input.addEventListener('focus', (e) => e.target.select())
 }

@@ -44,7 +44,7 @@ body {
 }
 .buckets input {
     background-color: transparent;
-    border: 1px solid #777;
+    border: 1px solid #555;
     padding: 5px;
     color: white;
     font-size: 16px;
@@ -124,19 +124,7 @@ input {
 
 input[type=number] {
     width: 2rem;
-}
-
-/* input[type=text]{
-    background-color: rgb(7, 18, 39);
-    border:none;
-    border-left: 2px solid salmon;
-    border-right: 2px solid salmon;
-    border-radius: 5px;
-    padding: 4px 10px;
-    margin: 10px 0;
-    color: lightcoral;
-    font-size: 1em;
-} */
+} 
 input[type=number], input[type=checkbox], label {
     cursor: pointer;
 }
