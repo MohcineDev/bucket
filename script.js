@@ -19,33 +19,36 @@ const removeDark = () => {
 localStorage.getItem('dark') == 'true' ? setDark() : removeDark()
 
 themeBtn.addEventListener('click', () => {
-    document.body.classList.contains('light') ? setDark():removeDark()
+    document.body.classList.contains('light') ? setDark() : removeDark()
 })
 
 inputTxt.forEach(input => input.addEventListener('focus', (e) => e.target.select()))
 
-range.addEventListener('input', numvalue)
-num.addEventListener('input', numvalue)
+range.addEventListener('change', numvalue)
+num.addEventListener('change', numvalue)
+
 //atach the range with the numeric input
 function numvalue(v) {
     const value = v.target.value
     range.value = value
     num.value = value
+
+    if (value >= 30) bucketName.style.width = '360px'
+    else if (value >= 20) bucketName.style.width = '280px' 
+
 }
 
-const form = document.getElementById('form') // get the element form
-range.value = 4
-num.value = 4
+const form = document.getElementById('form')
+
+range.value = 10
+num.value = 10
+
 const upper = document.getElementById('upper')
 const number = document.getElementById('number')
-const sumbol = document.getElementById('sumbol')
-
 
 const lower_case_code = ArrayFromLowToHigh(97, 122) //ascii
 const upper_case_code = ArrayFromLowToHigh(65, 90) // the range of upper case characters in decimal
 const number_char_code = ArrayFromLowToHigh(48, 57)
-const symbol_char_code = ArrayFromLowToHigh(33, 47).concat(ArrayFromLowToHigh(58, 63))
-    .concat(ArrayFromLowToHigh(91, 96)).concat(ArrayFromLowToHigh(123, 126)) // the range of symbol characters in decimal
 
 //when click the button
 form.addEventListener('submit', a => {
@@ -54,14 +57,15 @@ form.addEventListener('submit', a => {
     const charAmount = range.value
     const includeUpper = upper.checked
     const includeNumber = number.checked
-    const includeSumbol = sumbol.checked
 
-    const name = generatepass(charAmount, includeUpper, includeNumber, includeSumbol) // call the function
+    const name = generateName(charAmount, includeUpper, includeNumber) // call the function
     bucketName.value = name      //set the value
 })
+
 //return an array based on the low and high value
 function ArrayFromLowToHigh(low, high) {
-    const array = [] // empty array
+    const array = []
+
     for (let i = low; i <= high; i++) {
         array.push(i)
     }
@@ -69,26 +73,24 @@ function ArrayFromLowToHigh(low, high) {
 }
 
 //main function
-function generatepass(characterAmount, UpperCase, Numbers, Symbols) {
+function generateName(characterAmount, UpperCase, Numbers) {
 
     let charCode = lower_case_code // declare an array charCode = lower_case_code array ,  default are lower case characters
     if (UpperCase) charCode = charCode.concat(upper_case_code) // if checked add the upper case characters
     if (Numbers) charCode = charCode.concat(number_char_code)
-    if (Symbols) charCode = charCode.concat(symbol_char_code)
 
-    const pass = [] // empty array
+    const name = [] // empty array
 
     for (let i = 0; i < characterAmount; i++) { //characterAmount the value of the range or numeric input
 
         const character = charCode[Math.floor(Math.random() * charCode.length)] // random number times the length of the array charCode
 
-        pass.push(String.fromCharCode(character)) // add the character converted to the equivalent ascii code to the pass array
+        name.push(String.fromCharCode(character)) // add the character converted to the equivalent ascii code to the name array
     }
-    return pass.join('') //wrapped the pass with a ' quote mark to become a valid string
-
+    return name.join('') // convert array to string
 }
 
-/// add new input to save bucket name here
+/// add new input to save bucket name
 const addInput = () => {
     let input = document.createElement('input')
 
@@ -98,7 +100,3 @@ const addInput = () => {
 }
 
 addInputBtn.addEventListener('click', addInput)
-
-const selectOnFocus = () => {
-    input.addEventListener('focus', (e) => e.target.select())
-}
