@@ -40,8 +40,8 @@ function numvalue(v) {
 
 const form = document.getElementById('form')
 
-range.value = 10
-num.value = 10
+range.value = 20
+num.value = 20
 
 const upper = document.getElementById('upper')
 const number = document.getElementById('number')
@@ -94,7 +94,7 @@ function generateName(characterAmount, UpperCase, Numbers) {
 const addInput = () => {
     let input = document.createElement('input')
 
-    input.placeholder = "save bucket name here"
+    input.placeholder = "bucket name"
     input.addEventListener('focus', (e) => e.target.select())
     wrapper.appendChild(input)
 }

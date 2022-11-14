@@ -1,7 +1,7 @@
 :root {
     --dark-bg: #313131;
     --light-txt: lightblue;
-    --blue:rgb(16, 125, 189);
+    --blue: rgb(16, 125, 189);
 }
 
 body {
@@ -36,12 +36,14 @@ body {
     padding: 1rem;
     position: relative;
 }
-.buckets .wrapper{
+
+.buckets .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     padding-bottom: 2rem;
 }
+
 .buckets input {
     background-color: transparent;
     border: 1px solid #555;
@@ -52,9 +54,11 @@ body {
     border-radius: 5px;
     text-align: center;
 }
+
 .light .buckets input {
     color: var(--dark-bg);
 }
+
 .add-input {
     width: 40px;
     height: 40px;
@@ -67,8 +71,8 @@ body {
 
 #container {
     background-color: rgb(7, 18, 39);
-    padding: 3em;
-    border-radius: 2em;
+    padding: 0 3rem 3rem;
+    border-radius: 2rem;
     border: 2px solid rgb(27, 76, 105);
     display: flex;
     color: var(--light-txt);
@@ -85,7 +89,7 @@ body {
 
 h1 {
     color: var(--blue);
-    margin: 0;
+    margin: 2rem 0 1rem;
 }
 
 .bucket-name {
@@ -97,7 +101,7 @@ h1 {
     border-radius: 5px;
     padding: 4px 10px;
     letter-spacing: 1px;
-    color:var(--blue);
+    color: var(--blue);
     font-size: 1em;
     margin: 1rem 0;
     text-align: center;
@@ -124,7 +128,8 @@ input {
 
 input[type=number] {
     width: 2rem;
-} 
+}
+
 input[type=number], input[type=checkbox], label {
     cursor: pointer;
 }
@@ -147,5 +152,21 @@ button {
 
 button:hover {
     background-color: rgb(20, 77, 143);
+}
 
+@media screen and (max-width:920px) {
+
+    .buckets .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:786px) {
+
+    .buckets .wrapper {
+        grid-template-columns: 1fr;
+    }
+    #container{
+        padding: 0 1rem 3rem;
+    }
 }
