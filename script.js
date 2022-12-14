@@ -5,6 +5,8 @@ const bucketName = document.querySelector('.bucket-name')
 const addInputBtn = document.querySelector('.add-input')
 const wrapper = document.querySelector('.wrapper')
 const inputTxt = document.querySelectorAll('input[type=text]')
+const inputRadio = document.querySelectorAll('input[type=radio]')
+const options = document.querySelectorAll('.option')
 
 // set the theme state
 const setDark = () => {
@@ -22,6 +24,49 @@ themeBtn.addEventListener('click', () => {
     document.body.classList.contains('light') ? setDark() : removeDark()
 })
 
+
+///set the bucket name only numbers or merged with other chars
+
+
+const optionsFade = (bNameType) => {
+    if (bNameType === 'merged') {
+        options.forEach(option => {
+            option.classList.remove('only_numbers')
+            Array.from(option.querySelectorAll('input'), i => i.disabled = false)
+        })
+    }
+    else if (bNameType === 'only_numbers') {
+        options.forEach(option => {
+            option.classList.add('only_numbers')
+            Array.from(option.querySelectorAll('input'), i => i.disabled = true)
+        })
+    }
+}
+
+
+const setBucketNameType = () => {
+    let bNameType = localStorage.getItem('b_name')
+
+    if (bNameType === null) {
+        return
+    }
+    else if (bNameType === 'merged') {
+        inputRadio[1].checked = true
+        optionsFade('merged')
+    }
+    else if (bNameType === 'only_numbers') {
+        inputRadio[0].checked = true
+        optionsFade('only_numbers')
+    }
+}
+
+setBucketNameType()
+
+inputRadio.forEach(input => input.addEventListener('change', e => {
+    localStorage.setItem('b_name', e.target.id)
+    setBucketNameType()
+}))
+
 inputTxt.forEach(input => input.addEventListener('focus', (e) => e.target.select()))
 
 range.addEventListener('change', numvalue)
@@ -34,7 +79,7 @@ function numvalue(v) {
     num.value = value
 
     if (value >= 30) bucketName.style.width = '360px'
-    else if (value >= 20) bucketName.style.width = '280px' 
+    else if (value >= 20) bucketName.style.width = '280px'
 
 }
 
@@ -52,7 +97,7 @@ const number_char_code = ArrayFromLowToHigh(48, 57)
 
 //when click the button
 form.addEventListener('submit', a => {
-    a.preventDefault() // remove the default behavior
+    a.preventDefault() // remove the default behavior of submit btn
 
     const charAmount = range.value
     const includeUpper = upper.checked
@@ -62,7 +107,7 @@ form.addEventListener('submit', a => {
     bucketName.value = name      //set the value
 })
 
-//return an array based on the low and high value
+//return an array based on the low and high values of the specified decimal range
 function ArrayFromLowToHigh(low, high) {
     const array = []
 

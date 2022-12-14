@@ -1,7 +1,7 @@
 :root {
     --dark-bg: #313131;
-    --light-txt: lightblue;
-    --blue: rgb(16, 125, 189);
+    --light-blue: lightblue;
+    --blue: rgb(68, 166, 223);
 }
 
 body {
@@ -10,14 +10,14 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    color: var(--light-txt);
+    color: var(--light-blue);
     margin: 0;
     align-items: center;
     position: relative;
 }
 
 .light {
-    background-color: var(--light-txt);
+    background-color: var(--light-blue);
     color: var(--dark-bg);
 }
 
@@ -71,11 +71,11 @@ body {
 
 #container {
     background-color: rgb(7, 18, 39);
-    padding: 0 3rem 3rem;
+    padding: 0 3em 3em;
     border-radius: 2rem;
     border: 2px solid rgb(27, 76, 105);
     display: flex;
-    color: var(--light-txt);
+    color: var(--light-blue);
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -106,22 +106,39 @@ h1 {
     margin: 1rem 0;
     text-align: center;
 }
+ 
+form {
+    row-gap: 20px;
+    column-gap: 3em;
+    justify-content: center;
+    align-items: center;
+    min-width: 380px;
+}
 
-form div {
+form>div {
+    display: grid;
+    grid-template-columns: 200px auto;
+    margin: 1rem 0;
+}
+
+form>div>div {
     display: flex;
     align-items: center;
 }
-
-form {
-    display: grid;
-    grid-template-columns: auto auto;
-    row-gap: 20px;
-    column-gap: 4em;
+form .merged {
     justify-content: center;
-    align-items: center;
-
 }
 
+
+.b_name{
+    border-bottom: 1px dashed var(--light-blue);
+    border-top: 1px dashed var(--light-blue);
+    padding: 1rem 0;
+}
+.only_numbers{
+    opacity: 0.1;
+}
+ 
 input {
     outline: none;
 }
@@ -135,19 +152,18 @@ input[type=number], input[type=checkbox], label {
 }
 
 button {
+    width: 100%;
     cursor: pointer;
-    margin: 10px;
+    margin: 10px 0;
     background-color: transparent;
-    color: lightblue;
+    color: var(--light-blue);
     padding: 10px;
     font-size: 1em;
     border-radius: 5em;
-    border: 1px lightblue solid;
+    border: 1px var(--light-blue) solid;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    grid-column: 2 span;
+    text-transform: uppercase;  
     outline: none;
-
 }
 
 button:hover {
@@ -166,7 +182,8 @@ button:hover {
     .buckets .wrapper {
         grid-template-columns: 1fr;
     }
-    #container{
-        padding: 0 1rem 3rem;
+
+    #container {
+        padding: 0 1rem 3em;
     }
 }
