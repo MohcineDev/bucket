@@ -65,8 +65,11 @@ body {
     cursor: pointer;
     position: absolute;
     bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: calc(50% - 20px);
+}
+
+.add-input:hover {
+    transform: scale(1.07);
 }
 
 #container {
@@ -106,7 +109,7 @@ h1 {
     margin: 1rem 0;
     text-align: center;
 }
- 
+
 form {
     row-gap: 20px;
     column-gap: 3em;
@@ -125,20 +128,22 @@ form>div>div {
     display: flex;
     align-items: center;
 }
+
 form .merged {
     justify-content: center;
 }
 
 
-.b_name{
+.b_name {
     border-bottom: 1px dashed var(--light-blue);
     border-top: 1px dashed var(--light-blue);
     padding: 1rem 0;
 }
-.only_numbers{
-    opacity: 0.1;
+
+.only_numbers {
+    opacity: 0.2;
 }
- 
+
 input {
     outline: none;
 }
@@ -147,7 +152,7 @@ input[type=number] {
     width: 2rem;
 }
 
-input[type=number], input[type=checkbox], label {
+input[type=number], input[type=checkbox], input[type=radio], label {
     cursor: pointer;
 }
 
@@ -162,7 +167,7 @@ button {
     border-radius: 5em;
     border: 1px var(--light-blue) solid;
     letter-spacing: 1px;
-    text-transform: uppercase;  
+    text-transform: uppercase;
     outline: none;
 }
 

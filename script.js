@@ -30,12 +30,16 @@ themeBtn.addEventListener('click', () => {
 
 const optionsFade = (bNameType) => {
     if (bNameType === 'merged') {
+        localStorage.setItem('b_name', 'merged')
+
         options.forEach(option => {
             option.classList.remove('only_numbers')
             Array.from(option.querySelectorAll('input'), i => i.disabled = false)
         })
     }
     else if (bNameType === 'only_numbers') {
+        localStorage.setItem('b_name', 'only_numbers')
+
         options.forEach(option => {
             option.classList.add('only_numbers')
             Array.from(option.querySelectorAll('input'), i => i.disabled = true)
@@ -47,10 +51,7 @@ const optionsFade = (bNameType) => {
 const setBucketNameType = () => {
     let bNameType = localStorage.getItem('b_name')
 
-    if (bNameType === null) {
-        return
-    }
-    else if (bNameType === 'merged') {
+    if (bNameType === null || bNameType === 'merged') {
         inputRadio[1].checked = true
         optionsFade('merged')
     }
@@ -62,10 +63,12 @@ const setBucketNameType = () => {
 
 setBucketNameType()
 
+// radio btn input event listener 
 inputRadio.forEach(input => input.addEventListener('change', e => {
     localStorage.setItem('b_name', e.target.id)
     setBucketNameType()
 }))
+
 
 inputTxt.forEach(input => input.addEventListener('focus', (e) => e.target.select()))
 
@@ -89,21 +92,21 @@ range.value = 20
 num.value = 20
 
 const upper = document.getElementById('upper')
-const number = document.getElementById('number')
+const lower = document.getElementById('lower')
 
 const lower_case_code = ArrayFromLowToHigh(97, 122) //ascii
 const upper_case_code = ArrayFromLowToHigh(65, 90) // the range of upper case characters in decimal
-const number_char_code = ArrayFromLowToHigh(48, 57)
+const number_char_code = ArrayFromLowToHigh(48, 57) // numbers range
 
 //when click the button
 form.addEventListener('submit', a => {
     a.preventDefault() // remove the default behavior of submit btn
 
     const charAmount = range.value
-    const includeUpper = upper.checked
-    const includeNumber = number.checked
+    const includeUpper = localStorage.getItem('b_name') === 'merged' ? upper.checked : null
+    const includeLower = localStorage.getItem('b_name') === 'merged' ? lower.checked : null
 
-    const name = generateName(charAmount, includeUpper, includeNumber) // call the function
+    const name = generateName(charAmount, includeLower, includeUpper) // call the function
     bucketName.value = name      //set the value
 })
 
@@ -118,11 +121,11 @@ function ArrayFromLowToHigh(low, high) {
 }
 
 //main function
-function generateName(characterAmount, UpperCase, Numbers) {
+function generateName(characterAmount,LowerCase, UpperCase) {Number
 
-    let charCode = lower_case_code // declare an array charCode = lower_case_code array ,  default are lower case characters
+    let charCode = number_char_code // declare an array charCode = number_char_code array ,  default are numbers
+    if (LowerCase) charCode = charCode.concat(lower_case_code) 
     if (UpperCase) charCode = charCode.concat(upper_case_code) // if checked add the upper case characters
-    if (Numbers) charCode = charCode.concat(number_char_code)
 
     const name = [] // empty array
 
@@ -136,12 +139,19 @@ function generateName(characterAmount, UpperCase, Numbers) {
 }
 
 /// add new input to save bucket name
-const addInput = () => {
+const addInput = (e) => {
     let input = document.createElement('input')
 
     input.placeholder = "bucket name"
     input.addEventListener('focus', (e) => e.target.select())
     wrapper.appendChild(input)
+ 
+    addInputBtn.animate({
+        transform: "rotate(90deg)"
+    }, {
+        duration:300, iterations:1
+    })
+    
 }
 
 addInputBtn.addEventListener('click', addInput)
