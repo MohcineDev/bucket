@@ -46,22 +46,7 @@ const optionsFade = (bNameType) => {
         })
     }
 }
-
-
-const setBucketNameType = () => {
-    let bNameType = localStorage.getItem('b_name')
-
-    if (bNameType === null || bNameType === 'merged') {
-        inputRadio[1].checked = true
-        optionsFade('merged')
-    }
-    else if (bNameType === 'only_numbers') {
-        inputRadio[0].checked = true
-        optionsFade('only_numbers')
-    }
-}
-
-setBucketNameType()
+ 
 
 // radio btn input event listener 
 inputRadio.forEach(input => input.addEventListener('change', e => {
@@ -103,8 +88,8 @@ form.addEventListener('submit', a => {
     a.preventDefault() // remove the default behavior of submit btn
 
     const charAmount = range.value
-    const includeUpper = localStorage.getItem('b_name') === 'merged' ? upper.checked : null
-    const includeLower = localStorage.getItem('b_name') === 'merged' ? lower.checked : null
+    const includeUpper = upper.checked ? upper.checked : null
+    const includeLower = lower.checked  ? lower.checked : null
 
     const name = generateName(charAmount, includeLower, includeUpper) // call the function
     bucketName.value = name      //set the value
