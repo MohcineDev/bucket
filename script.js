@@ -113,7 +113,6 @@ function ArrayFromLowToHigh(low, high) {
 
 //main function
 function generateName(characterAmount, LowerCase, UpperCase) {
-    Number
 
     let charCode = number_char_code // declare an array charCode = number_char_code array ,  default are numbers
     if (LowerCase) charCode = charCode.concat(lower_case_code)
@@ -131,10 +130,12 @@ function generateName(characterAmount, LowerCase, UpperCase) {
 }
 
 /// add new input to save bucket name
-const addInput = (e) => {
+const addInput = (value) => {
     let input = document.createElement('input')
 
     input.placeholder = "bucket name"
+    input.value = value
+
     input.addEventListener('focus', (e) => e.target.select())
     wrapper.appendChild(input)
 
@@ -146,6 +147,42 @@ const addInput = (e) => {
 
 }
 
-addInputBtn.addEventListener('click', addInput)
+addInputBtn.addEventListener('click', () => addInput(''))
 
+///////////// load buckets from local storage
+
+localStorage.getItem('buckets') ? (
+    JSON.parse(localStorage.getItem('buckets')).forEach(bucket => {
+        addInput(bucket)
+    })
+
+) : console.log('nothing found')
+
+///delete buckets
+deleteBuckets.addEventListener('click', () => {
+    let buckets = localStorage.getItem('buckets')
+    let deleteBtn = confirm('Delete buckets from local Storrage!!')
+
+    if (deleteBtn) {
+
+        if (buckets) {
+
+            localStorage.removeItem('buckets')
+            window.location.reload()
+
+        }
+    }
+})
+
+
+///save buckets
+
+saveBuckets.addEventListener('click', () => {
+    let myBuckets = Array.from(wrapper.querySelectorAll('input'), elem => elem.value)
+    let saveBtn = confirm('save buckets to local Storrage!!')
+
+    if (saveBtn) {
+        localStorage.setItem('buckets', JSON.stringify(myBuckets))
+    }
+})
 
