@@ -1,7 +1,13 @@
 :root {
-    --dark-bg: #313131;
     --light-blue: lightblue;
-    --blue: rgb(68, 166, 223);
+
+
+    /*  */
+
+    --dark-bg: #101020;
+    --ui_blue: #198fe7;
+    --ui_light: #fafafa;
+
 }
 
 body {
@@ -10,18 +16,19 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    color: var(--light-blue);
+    color: var(--ui_blue);
     margin: 0;
     align-items: center;
     position: relative;
 }
 
+/* light theme */
 .light {
-    background-color: var(--light-blue);
+    background-color: var(--ui_light);
     color: var(--dark-bg);
 }
 
-.theme {
+.theme_btn {
     width: 30px;
     height: 30px;
     position: absolute;
@@ -46,61 +53,43 @@ body {
 
 .buckets input {
     background-color: transparent;
-    border: 1px solid #555;
+    border: 1px solid var(--ui_blue);
     padding: 5px;
-    color: white;
+    color: var(--ui_blue);
     font-size: 16px;
     margin: 5px 0;
     border-radius: 5px;
     text-align: center;
 }
 
-.light .buckets input {
-    color: var(--dark-bg);
-}
-
-.add-input {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 10px;
-    left: calc(50% - 20px);
-}
-
-.add-input:hover {
-    transform: scale(1.07);
-}
-
 #container {
-    background-color: rgb(7, 18, 39);
+    background-color: var(--ui_blue);
     padding: 0 3em 3em;
-    border-radius: 2rem;
-    border: 2px solid rgb(27, 76, 105);
+    border-radius: 1.5rem;
+    border: 2px solid var(--ui_blue);
     display: flex;
-    color: var(--light-blue);
+    color: var(--ui_light);
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /*change direction to vertical*/
+    box-shadow: 0px 0px 5px var(--ui_blue);
+    position: relative;
 }
 
 #container:hover {
-    border: 2px solid rgb(20, 77, 143);
-    box-shadow: 0px 0px 20px rgb(20, 77, 143);
+    box-shadow: 0px 0px 10px var(--ui_blue);
 }
 
 h1 {
-    color: var(--blue);
     margin: 2rem 0 1rem;
 }
 
 .bucket-name {
     font-weight: 100;
-    background-color: rgb(7, 18, 39);
+    background-color: transparent;
     border-width: 0 2px 0 2px;
     border-style: solid;
-    border-color: rgb(10, 110, 168);
+    border-color: var(--ui_white);
     border-radius: 5px;
     padding: 4px 10px;
     letter-spacing: 1px;
@@ -111,10 +100,6 @@ h1 {
 }
 
 form {
-    row-gap: 20px;
-    column-gap: 3em;
-    justify-content: center;
-    align-items: center;
     min-width: 380px;
 }
 
@@ -129,25 +114,7 @@ form>div>div {
     align-items: center;
 }
 
-
-/* remove unused css next time 12 / 2 / 2023  */
-
-form .merged {
-    justify-content: center;
-}
-
-
-.b_name {
-    border-bottom: 1px dashed var(--light-blue);
-    border-top: 1px dashed var(--light-blue);
-    padding: 1rem 0;
-}
-
-.only_numbers {
-    opacity: 0.2;
-}
-
-input {
+button, input {
     outline: none;
 }
 
@@ -155,7 +122,7 @@ input[type=number] {
     width: 2rem;
 }
 
-input[type=number], input[type=checkbox], input[type=radio], label {
+input[type=number], input[type=checkbox], label {
     cursor: pointer;
 }
 
@@ -164,19 +131,62 @@ button {
     cursor: pointer;
     margin: 10px 0;
     background-color: transparent;
-    color: var(--light-blue);
+    color: var(--ui_light);
     padding: 10px;
     font-size: 1em;
     border-radius: 5em;
-    border: 1px var(--light-blue) solid;
+    border: 1px var(--ui_light) solid;
     letter-spacing: 1px;
     text-transform: uppercase;
-    outline: none;
+    transition: transform 0.3s;
 }
 
 button:hover {
-    background-color: rgb(20, 77, 143);
+    transform: translateY(-3px);
 }
+
+/* add-input */
+.add-input {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: calc(50% - 20px);
+}
+
+.add-input:hover {
+    transform: scale(1.07);
+}
+
+
+
+.light .buckets input {
+    border: 1px solid var(--dark-bg);
+    color: var(--dark-bg);
+}
+
+.local_storage {
+    position: absolute;
+    left: -3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--ui_blue);
+    width: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px 0 0 10px;
+}
+
+
+.local_storage svg {
+    width: 2rem;
+    display: block;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
 
 @media screen and (max-width:920px) {
 

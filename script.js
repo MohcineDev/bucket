@@ -1,12 +1,18 @@
 const range = document.getElementById('range')
 const num = document.getElementById('num')
-const themeBtn = document.querySelector('.theme')
+const themeBtn = document.querySelector('.theme_btn')
 const bucketName = document.querySelector('.bucket-name')
 const addInputBtn = document.querySelector('.add-input')
 const wrapper = document.querySelector('.wrapper')
 const inputTxt = document.querySelectorAll('input[type=text]')
 const inputRadio = document.querySelectorAll('input[type=radio]')
 const options = document.querySelectorAll('.option')
+
+
+///localStorage
+
+const deleteBuckets = document.querySelector('#delete')
+const saveBuckets = document.querySelector('#save')
 
 // set the theme state
 const setDark = () => {
@@ -46,7 +52,7 @@ const optionsFade = (bNameType) => {
         })
     }
 }
- 
+
 
 // radio btn input event listener 
 inputRadio.forEach(input => input.addEventListener('change', e => {
@@ -89,7 +95,7 @@ form.addEventListener('submit', a => {
 
     const charAmount = range.value
     const includeUpper = upper.checked ? upper.checked : null
-    const includeLower = lower.checked  ? lower.checked : null
+    const includeLower = lower.checked ? lower.checked : null
 
     const name = generateName(charAmount, includeLower, includeUpper) // call the function
     bucketName.value = name      //set the value
@@ -106,10 +112,11 @@ function ArrayFromLowToHigh(low, high) {
 }
 
 //main function
-function generateName(characterAmount,LowerCase, UpperCase) {Number
+function generateName(characterAmount, LowerCase, UpperCase) {
+    Number
 
     let charCode = number_char_code // declare an array charCode = number_char_code array ,  default are numbers
-    if (LowerCase) charCode = charCode.concat(lower_case_code) 
+    if (LowerCase) charCode = charCode.concat(lower_case_code)
     if (UpperCase) charCode = charCode.concat(upper_case_code) // if checked add the upper case characters
 
     const name = [] // empty array
@@ -130,13 +137,15 @@ const addInput = (e) => {
     input.placeholder = "bucket name"
     input.addEventListener('focus', (e) => e.target.select())
     wrapper.appendChild(input)
- 
+
     addInputBtn.animate({
         transform: "rotate(90deg)"
     }, {
-        duration:300, iterations:1
+        duration: 300, iterations: 1
     })
-    
+
 }
 
 addInputBtn.addEventListener('click', addInput)
+
+
