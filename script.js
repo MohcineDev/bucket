@@ -193,3 +193,5 @@ const imgs = ["img.jpg", "img0.jpg", "img1.jpg","img2.jpg","img3.jpg", "img4.jpg
 
 imgOne.setAttribute('src', `./imgs/${imgs[Math.floor(Math.random()*imgs.length)]}`)
 imgTwo.setAttribute('src', `./imgs/${imgs[Math.floor(Math.random()*imgs.length)]}`)
+
+console.log(imgs.length)
