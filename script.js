@@ -8,6 +8,8 @@ const inputTxt = document.querySelectorAll('input[type=text]')
 const inputRadio = document.querySelectorAll('input[type=radio]')
 const options = document.querySelectorAll('.option')
 
+const imgOne = document.querySelector('#img1')
+const imgTwo = document.querySelector('#img2')
 
 ///localStorage
 
@@ -186,3 +188,7 @@ saveBuckets.addEventListener('click', () => {
     }
 })
 
+const imgs = ["img.jpg", "img0.jpg", "img1.jpg","img2.jpg","img3.jpg", "img4.jpg", "img5.png", "img6.jpeg", "img6.jpg"]
+
+imgOne.setAttribute('src', `./imgs/${imgs[Math.floor(Math.random()*imgs.length)]}`)
+imgTwo.setAttribute('src', `./imgs/${imgs[Math.floor(Math.random()*imgs.length)]}`)
