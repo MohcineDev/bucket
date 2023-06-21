@@ -71,6 +71,10 @@ body {
     width: 250px;
     box-shadow: 0 0px 15px #aaa;
 }
+.middle .ad_container{
+    display: flex;
+    align-items: center;
+}
 #container {
     background-color: var(--ui_blue);
     padding: 0 3em 2em;
