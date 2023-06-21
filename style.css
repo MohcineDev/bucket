@@ -71,7 +71,7 @@ body {
     width: 250px;
     box-shadow: 0 0px 15px #aaa;
 }
-.middle .ads_container{
+.middle .containerad{
     display: flex;
     align-items: center;
 }
