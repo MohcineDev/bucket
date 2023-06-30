@@ -44,8 +44,11 @@ body {
     top: 10px;
     right: 10px;
     cursor: pointer;
+    transition: transform 0.5s;
 }
-
+.theme_btn:hover {
+    transform: translate(-8px, 8px);
+}
 .buckets {
     width: 90%;
     min-height: 200px;
@@ -223,6 +226,12 @@ button:hover {
     margin: 10px 0;
 }
 
+@media only screen and (max-width: 992px) {
+    .middle img{ 
+        width: 150px;
+      
+    }
+}
 
 @media screen and (max-width:920px) {
 
@@ -240,4 +249,17 @@ button:hover {
     #container {
         padding: 0 1rem 3em;
     }
+    .middle img{ 
+     display: none;
+      
+    }
+    form {
+        min-width: 200px;
+      }
+
+form>div {
+    display: grid;
+    grid-template-columns: 150px auto;
+    margin: 1rem 0;
+}
 }
