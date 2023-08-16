@@ -11,6 +11,10 @@ const options = document.querySelectorAll('.option')
 const imgOne = document.querySelector('#img1')
 const imgTwo = document.querySelector('#img2')
 
+
+///open close localStorage options
+const arrow1 = document.querySelector('.arrow1')
+const local_storage = document.querySelector('.local_storage')
 ///localStorage
 
 const deleteBuckets = document.querySelector('#delete')
@@ -188,10 +192,24 @@ saveBuckets.addEventListener('click', () => {
     }
 })
 
-const imgs = ["img.jpg", "img0.jpg", "img1.jpg","img2.jpg","img3.jpg", "img4.jpg", "img5.png", "img6.jpeg", "img6.jpg",
-"img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg"]
+const imgs = ["img.jpg", "img0.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.png", "img6.jpeg", "img6.jpg",
+    "img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg"]
 
-imgOne.setAttribute('src', `./imgs/${imgs[Math.floor(Math.random()*imgs.length)]}`)
-imgTwo.setAttribute('src', `./imgs/${imgs[Math.floor(Math.random()*imgs.length)]}`)
+imgOne.setAttribute('src', `./imgs/${imgs[Math.floor(Math.random() * imgs.length)]}`)
+imgTwo.setAttribute('src', `./imgs/${imgs[Math.floor(Math.random() * imgs.length)]}`)
 
-console.log(imgs.length)
+
+
+arrow1.addEventListener("click", () => {
+    console.log(imgs.length)
+    arrow1.classList.contains('arrow1_close') ?
+        (
+            arrow1.classList.remove('arrow1_close'),
+            local_storage.classList.remove('show_local_storage')
+        )
+        :
+        (
+            arrow1.classList.add('arrow1_close'),
+            local_storage.classList.add('show_local_storage')
+        )
+})
