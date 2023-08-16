@@ -193,7 +193,7 @@ saveBuckets.addEventListener('click', () => {
 })
 
 const imgs1 = ["img.jpg", "img0.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.png","img6.jpeg", "img6.jpg"]
-const imgs2 = [ "img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg","img12.jpeg", "img13.jpg","img14.jpg"]
+const imgs2 = [ "img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg","img12.jpg", "img13.jpg","img14.jpg"]
 
 imgOne.setAttribute('src', `./imgs/${imgs1[Math.floor(Math.random() * imgs1.length)]}`)
 imgTwo.setAttribute('src', `./imgs/${imgs2[Math.floor(Math.random() * imgs2.length)]}`)
