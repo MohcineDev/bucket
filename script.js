@@ -192,23 +192,29 @@ saveBuckets.addEventListener('click', () => {
     }
 })
 
-const imgs1 = ["img.jpg", "img0.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.png","img6.jpeg", "img6.jpg"]
-const imgs2 = [ "img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg","img12.jpg", "img13.jpg","img14.jpg"]
+const imgs1 = ["img.jpg", "img0.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.png", "img6.jpeg", "img6.jpg"]
+const imgs2 = ["img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg", "img12.jpg", "img13.jpg", "img14.jpg"]
 
 imgOne.setAttribute('src', `./imgs/${imgs1[Math.floor(Math.random() * imgs1.length)]}`)
 imgTwo.setAttribute('src', `./imgs/${imgs2[Math.floor(Math.random() * imgs2.length)]}`)
 
 
 
+///  display buckets*
+
+
 arrow1.addEventListener("click", () => {
     arrow1.classList.contains('arrow1_close') ?
         (
             arrow1.classList.remove('arrow1_close'),
-            local_storage.classList.remove('show_local_storage')
+            local_storage.classList.remove('show_local_storage'),
+            local_storage.style.zIndex = -1
         )
         :
         (
             arrow1.classList.add('arrow1_close'),
-            local_storage.classList.add('show_local_storage')
+            local_storage.classList.add('show_local_storage'),
+            setTimeout(() => local_storage.style.zIndex = 0, 500)
+
         )
 })
