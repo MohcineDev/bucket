@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="MohcineDev">
-    <meta name="description" content="Random Amazon Bucket Name">
+    <meta name="description" content="Random Amazon Bucket Name Generator">
     <link rel="icon" type="image/x-icon" href="./fav.png">
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
@@ -35,25 +35,25 @@
         </div>
         <div id="container">
             <h1>Bucket Generator</h1>
-            <input type="text" class="bucket-name">
+            <input type="text" class="bucket-name" aria-label="bucket name">
            
             <form id="form">
                 <div>
                     <label for="num">Number of Chars</label>
                     <div>
-                        <input type="range" min="4" max="40" id="range">
-                        <input type="number" min="4" max="40" id="num">
+                        <input type="range" min="4" max="60" id="range" aria-label="range">
+                        <input type="number" min="4" max="60" id="num" aria-label="number">
                     </div>
                 </div>
 
 
                 <div class="option">
                     <label for="upper">Include Uppercase</label>
-                    <input type="checkbox" id="upper">
+                    <input type="checkbox" id="upper" disabled>
                 </div>
                 <div class="option">
                     <label for="lower">Include LowerCase</label>
-                    <input type="checkbox" id="lower">
+                    <input type="checkbox" id="lower"  >
                 </div>
 
                 <button type="submit">Generate</button>

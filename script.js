@@ -78,7 +78,8 @@ function numvalue(v) {
     range.value = value
     num.value = value
 
-    if (value >= 30) bucketName.style.width = '360px'
+    if (value >= 40) bucketName.style.width = '380px'
+    else if (value >= 30) bucketName.style.width = '340px'
     else if (value >= 20) bucketName.style.width = '280px'
 
 }
