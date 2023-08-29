@@ -15,6 +15,9 @@ const imgTwo = document.querySelector('#img2')
 ///open close localStorage options
 const arrow1 = document.querySelector('.arrow1')
 const local_storage = document.querySelector('.local_storage')
+
+///change color
+const inputColor = document.querySelector('input[type=color]')
 ///localStorage
 
 const deleteBuckets = document.querySelector('#delete')
@@ -219,3 +222,8 @@ arrow1.addEventListener("click", () => {
 
         )
 })
+
+console.clear()
+///change color
+
+inputColor.addEventListener('change', e =>  document.querySelector('body').style.setProperty("--ui_blue",e.target.value)   )  

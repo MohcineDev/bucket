@@ -254,6 +254,15 @@ svg#arrow {
     transform: rotate(135deg);
 }
 
+input[type=color]{
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: -20px;
+    bottom: 20px;
+    border: none;
+}
+
 .local_storage svg {
     width: 2rem;
     display: block;
