@@ -25,16 +25,17 @@ const saveBuckets = document.querySelector('#save')
 
 // set the theme state
 const setDark = () => {
-    document.body.classList.remove("light")
+    document.body.classList.remove("light",'light_theme')
     localStorage.setItem('dark', true)
 }
 const removeDark = () => {
-    document.body.classList.add('light')
+    document.body.classList.add('light', 'light_theme')
     localStorage.setItem('dark', false)
 }
 
 localStorage.getItem('dark') == 'true' ? setDark() : removeDark()
 
+///change theme : sun
 themeBtn.addEventListener('click', () => {
     document.body.classList.contains('light') ? setDark() : removeDark()
 })
