@@ -89,6 +89,8 @@ body.light_theme{
 .middle img {
     width: 250px;
     box-shadow: 0 0px 15px #aaa;
+    border-radius: 10px;
+
 }
 
 .middle .containerad {

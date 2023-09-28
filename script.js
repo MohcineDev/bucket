@@ -25,7 +25,7 @@ const saveBuckets = document.querySelector('#save')
 
 // set the theme state
 const setDark = () => {
-    document.body.classList.remove("light",'light_theme')
+    document.body.classList.remove("light", 'light_theme')
     localStorage.setItem('dark', true)
 }
 const removeDark = () => {
@@ -197,12 +197,10 @@ saveBuckets.addEventListener('click', () => {
     }
 })
 
-const imgs1 = ["img.jpg", "img0.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.png", "img6.jpeg", "img6.jpg"]
-const imgs2 = ["img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg", "img12.jpg", "img13.jpg", "img14.jpg"]
 
-imgOne.setAttribute('src', `./imgs/${imgs1[Math.floor(Math.random() * imgs1.length)]}`)
-imgTwo.setAttribute('src', `./imgs/${imgs2[Math.floor(Math.random() * imgs2.length)]}`)
-
+const countImages = 18
+imgOne.setAttribute('src', `./imgs/img${Math.floor(Math.random() * countImages)}.webp`)
+imgTwo.setAttribute('src', `./imgs/img${Math.floor(Math.random() * countImages)}.webp`)
 
 
 ///  display buckets*
@@ -227,4 +225,4 @@ arrow1.addEventListener("click", () => {
 console.clear()
 ///change color
 
-inputColor.addEventListener('change', e =>  document.querySelector('body').style.setProperty("--ui_blue",e.target.value)   )  
+inputColor.addEventListener('change', e => document.querySelector('body').style.setProperty("--ui_blue", e.target.value))  
